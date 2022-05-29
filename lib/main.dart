@@ -1,5 +1,6 @@
 import 'package:diplom_work/Screens/LoginForm.dart';
 import 'package:flutter/material.dart';
+import 'package:diplom_work/Data/Database.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: defaultColorScheme,
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(title: 'Login Ui',),
+      home: const LoginPage(title: 'Login Ui'),
     );
   }
 }

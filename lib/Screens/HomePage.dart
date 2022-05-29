@@ -16,29 +16,65 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('HomePage'),
       ),
-      body: ListView.separated(
-        itemCount: 15,
+      body: ListView(
         // physics: NeverScrollableScrollPhysics(),
         // addAutomaticKeepAlives: false,
         // cacheExtent: 100,
-        itemBuilder: (context, index) {
-          return ListTile(
+        children: ListTile.divideTiles(context: context, tiles: [
+          ListTile(
             leading: CircleAvatar(
               backgroundImage: AssetImage('assets/images/26.jpg'),
             ),
             title: Text('Иванова Мария Сергеевна'),
-            subtitle: Text('Отдел маркетинга'),
+            subtitle: Text('Отдел кадров'),
             trailing: Icon(Icons.edit),
             onTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const UserPage()));
             },
             selected: true,
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/9.jpg'),
+            ),
+            title: Text('Пахомова Риана Адольфовна'),
+            subtitle: Text('Отдел кадров'),
+            trailing: Icon(Icons.edit),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserPage()));
+            },
+            selected: true,
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/19.jpg'),
+            ),
+            title: Text('Беспалова Диана Егоровна'),
+            subtitle: Text('Отдел кадров'),
+            trailing: Icon(Icons.edit),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserPage()));
+            },
+            selected: true,
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              backgroundImage: AssetImage('assets/images/XXL.jfif'),
+            ),
+            title: Text('Рогов Ибрагил Геннадьевич'),
+            subtitle: Text('Отдел кадров'),
+            trailing: Icon(Icons.edit),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const UserPage()));
+            },
+            selected: true,
+          ),
+        ]
+        ).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -52,3 +88,16 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// leading: CircleAvatar(
+// backgroundImage: AssetImage('assets/images/26.jpg'),
+// ),
+// title: Text('Иванова Мария Сергеевна'),
+// subtitle: Text('Отдел маркетинга'),
+// trailing: Icon(Icons.edit),
+// onTap: () {
+// Navigator.push(context,
+// MaterialPageRoute(builder: (context) => const UserPage()));
+// },
+// selected: true,
+// ),

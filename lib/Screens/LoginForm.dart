@@ -1,5 +1,8 @@
 import 'package:diplom_work/Screens/HomePage.dart';
+import 'package:diplom_work/Data/Database.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);
@@ -12,6 +15,27 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   var rememberValue = false;
+  final login = ['0001', '0002', '0003', '0004'];
+  final pass = ['123456', '654321'];
+  
+
+  // void valueUserId(Admins) {
+  //   var valuesUserID = Admins.userID;
+  // }
+  //
+  // void valuePass(Admins) {
+  //   var valuesPass = Admins.passwoed;
+  // }
+  //
+  // void _showAlertDialog() {
+  //   AlertDialog(
+  //     title: const Text('Не правильный userId или пароль'),
+  //     content: const Text('Введите верные данные!'),
+  //     actions: [
+  //       TextButton(onPressed: () {}, child: const Text('Ok'))
+  //     ],
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +65,12 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   TextFormField(
+                    validator: (value) {
+                      if (!login.contains(value) || value!.isEmpty) {
+                        return 'Please enter your user ID';
+                      }
+                      return null;
+                    },
                     maxLines: 1,
                     decoration: InputDecoration(
                       hintText: 'User ID',
@@ -55,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextFormField(
                     validator: (value) {
-                      if (value == null || value.isEmpty) {
+                      if (!pass.contains(value) || value!.isEmpty) {
                         return 'Please enter your password';
                       }
                       return null;
@@ -75,10 +105,13 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const HomePage()),
-                      );
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(context, MaterialPageRoute(
+                            builder: (context) => const HomePage()),
+                        );
+                      }//else{
+                      //   _showAlertDialog();
+                      // }
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),

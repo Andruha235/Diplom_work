@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -27,7 +26,7 @@ class Admins {
 }
 
 
-void main() async {
+void dataMain() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final database = openDatabase(
@@ -81,22 +80,10 @@ void main() async {
     password: '123456',
   );
 
-  var admin_05 = const Admins(
-    userID: 0005,
-    password: '123456',
-  );
-
-  var admin_06 = const Admins(
-    userID: 0006,
-    password: '123456',
-  );
 
   await insertAdmins(admin_01);
   await insertAdmins(admin_02);
   await insertAdmins(admin_03);
   await insertAdmins(admin_04);
-  await insertAdmins(admin_05);
-  await insertAdmins(admin_06);
-
-
 }
+
